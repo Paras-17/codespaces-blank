@@ -5,13 +5,13 @@ import seaborn as sns
 import sys
 import matplotlib.pyplot as plt
 import seaborn as snsle
-results = []
-
+import dask as dd
 
 df = pd.read_csv("E:\\project\\recipies\\RAW_recipes.csv")
 
-def raw_recipes(df, ingredients):
-    
+def raw_recipes(df):
+    ingredients = input("Enter ingredients: ").split(',')
+    results = []
     for index, row in df.iterrows():
         count = 0
         for ingredient in ingredients:
@@ -20,12 +20,10 @@ def raw_recipes(df, ingredients):
         if count == len(ingredients):
             results.append(row.values)
             
-    #for result in results:
-        #print(result)
+    if results:
+        results_df = pd.DataFrame(results, columns=df.columns)
+        print(results_df)
+    else:
+        print("No results found")
 
-ingredients = ['pineapple','chicken','lemon','onion','egg']
-raw_recipes(df, ingredients)
-
-
-for result in results:
-        print(result)
+raw_recipes(df)
