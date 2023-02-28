@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as snsle
 import dask as dd
 
-df = pd.read_csv("E:\\project\\recipies\\RAW_recipes.csv")
+df = pd.read_csv("recipies/RAW_recipes.csv")
 
 def raw_recipes(df):
     ingredients = input("Enter ingredients: ").split(',')
